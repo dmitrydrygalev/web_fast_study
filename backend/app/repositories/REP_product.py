@@ -9,7 +9,7 @@ class ProductRepository:
     def __init__(self, db: Session):
         self.db = db
 
-    def get_all_products(self) -> List[Product]:
+    def get_products_all(self) -> List[Product]:
         return (self.db.query(Product)
                 .options(joinedload(Product.category))
                 .all())
@@ -20,7 +20,7 @@ class ProductRepository:
                 .filter(Product.id == product_id)
                 .first())
 
-    def get_product_by_category_id(self, category_id: int) -> Optional[Product]:
+    def get_product_by_category_id(self, category_id: int) -> Product:
         return (
             self.db.query(Product)
             .options(joinedload(Product.category))
@@ -35,7 +35,7 @@ class ProductRepository:
         self.db.refresh(db_product)
         return db_product
 
-    def get_several_products_by_id_lst(self, products_ids: List[int]) -> Optional[List[Product]]:
+    def get_several_products_by_id_lst(self, products_ids: List[int]) -> List[Product]:
         return (
             self.db.query(Product)
             .options(joinedload(Product.category))
