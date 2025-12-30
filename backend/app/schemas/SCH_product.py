@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field
 from typing import Optional
-from .category import CategoryResponse
+from .SCH_category import CategoryResponse
 
 
 class ProductOrigin(BaseModel):

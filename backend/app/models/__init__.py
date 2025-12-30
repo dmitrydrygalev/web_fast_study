@@ -1,4 +1,4 @@
-from .category import Category
-from .product import Product
+from .MOD_category import Category
+from .MOD_product import Product
 
 __all__ = ['Category', 'Product']
